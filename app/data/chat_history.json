@@ -1,0 +1,374 @@
+[
+    {
+        "role": "system",
+        "content": "\nYou are a helpful airline AI assistant.\n\nYou help users with:\n- airline ticket prices\n- flight information\n\nWhen needed, use the available tools.\n"
+    },
+    {
+        "role": "user",
+        "content": "hello "
+    },
+    {
+        "role": "assistant",
+        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How may I help you today?\n"
+    },
+    {
+        "role": "user",
+        "content": "i am planning to go london . do you have tickets ?"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-7837561074389724036",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"London\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-7837561074389724036",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"london\", \"price\": 799}"
+    },
+    {
+        "role": "assistant",
+        "content": "Yes, I can help you with tickets to London! I found a ticket for $799.\n\nWould you like to explore other options or book this ticket?\n"
+    },
+    {
+        "role": "user",
+        "content": "good to know, book a ticket for london "
+    },
+    {
+        "role": "assistant",
+        "content": "I can't directly book tickets for you at the moment. However, I can provide you with the ticket price, and then you can proceed with booking through the airline's website or a travel agent.\n\nWould you like me to find more details about flights to London, or perhaps search for different dates?\n"
+    },
+    {
+        "role": "user",
+        "content": "i also want to know the ticket prices of paris and tokyo "
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-13011019832924526087",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Paris\"}"
+                }
+            },
+            {
+                "id": "function-call-13011019832924525552",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Tokyo\"}"
+                }
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "content": "hi there "
+    },
+    {
+        "role": "assistant",
+        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How may I help you today?"
+    },
+    {
+        "role": "user",
+        "content": "tell me the ticket price of paris "
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-4764610614690180865",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Paris\"}"
+                }
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "content": "hi how are you "
+    },
+    {
+        "role": "assistant",
+        "content": "Hello! I'm an AI assistant, so I don't have feelings, but I'm ready to help you with airline ticket prices and flight information. How can I assist you today?"
+    },
+    {
+        "role": "user",
+        "content": "tell me the ticket price of london "
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-1815067706232690195",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"London\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-1815067706232690195",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"london\", \"price\": 799}"
+    },
+    {
+        "role": "assistant",
+        "content": "The ticket price for London is $799."
+    },
+    {
+        "role": "user",
+        "content": "also tell me the ticket price of dubai and paris"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-11238979752054358702",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Dubai\"}"
+                }
+            },
+            {
+                "id": "function-call-11238979752054360833",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Paris\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-11238979752054358702",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"dubai\", \"price\": 650}"
+    },
+    {
+        "tool_call_id": "function-call-11238979752054360833",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"paris\", \"price\": 899}"
+    },
+    {
+        "role": "assistant",
+        "content": "The ticket price for Dubai is $650 and for Paris is $899."
+    },
+    {
+        "role": "user",
+        "content": "which price is higher tokyo or london ?"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-12161435611688644641",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Tokyo\"}"
+                }
+            },
+            {
+                "id": "function-call-12161435611688645318",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"London\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-12161435611688644641",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"tokyo\", \"price\": 1400}"
+    },
+    {
+        "tool_call_id": "function-call-12161435611688645318",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"london\", \"price\": 799}"
+    },
+    {
+        "role": "assistant",
+        "content": "The ticket price for Tokyo is $1400 and for London is $799. Therefore, the ticket price for **Tokyo** is higher."
+    },
+    {
+        "role": "user",
+        "content": "hi, i am planning a summer trip "
+    },
+    {
+        "role": "assistant",
+        "content": "That sounds exciting! To help you with your summer trip, I can provide you with airline ticket prices and flight information.\n\nWhere are you planning to go this summer?"
+    },
+    {
+        "role": "user",
+        "content": "i have two options in my mind, paris and dubai. But i am curious about the tickets prices "
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-9505367888970986937",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Paris\"}"
+                }
+            },
+            {
+                "id": "function-call-9505367888970988582",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Dubai\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-9505367888970986937",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"paris\", \"price\": 899}"
+    },
+    {
+        "tool_call_id": "function-call-9505367888970988582",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"dubai\", \"price\": 650}"
+    },
+    {
+        "role": "assistant",
+        "content": "I can help you with that!\n\nThe ticket price for Paris is $899.\nThe ticket price for Dubai is $650."
+    },
+    {
+        "role": "user",
+        "content": "well thats suit my budget , ok then book my ticket "
+    },
+    {
+        "role": "assistant",
+        "content": "I can help you with that! To book your ticket, I need your name and which destination you'd like to book for (Paris or Dubai)."
+    },
+    {
+        "role": "user",
+        "content": "name is Hanzala,  and ticket for paris "
+    },
+    {
+        "role": "user",
+        "content": "hi i want to book a ticket for paris "
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-17470941756261857957",
+                "type": "function",
+                "function": {
+                    "name": "create_booking",
+                    "arguments": "{\"name\":\"Hanzala\",\"destination\":\"Paris\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-17470941756261857957",
+        "role": "tool",
+        "name": "create_booking",
+        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"633551f6-358e-4e40-a145-a4b5b16fde0c\", \"name\": \"Hanzala\", \"destination\": \"Paris\"}}"
+    },
+    {
+        "role": "assistant",
+        "content": "Great, Hanzala! Your ticket for Paris has been booked. Your booking ID is `633551f6-358e-4e40-a145-a4b5b16fde0c`.\n\nIs there anything else I can help you with regarding your trip to Paris or other flight information?"
+    },
+    {
+        "role": "user",
+        "content": "book a flight to dubai for Hanzala on 25 May 2026, also tell the price "
+    },
+    {
+        "role": "assistant",
+        "content": "I can tell you the ticket price for Dubai and book a flight for Hanzala, but I cannot book for a specific date like \"25 May 2026\" with the current tools.\n\nWould you like me to proceed with booking a flight to Dubai for Hanzala at the available date, and also tell you the price?"
+    },
+    {
+        "role": "user",
+        "content": "yess go ahead"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-1918053030619488602",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"Dubai\"}"
+                }
+            },
+            {
+                "id": "function-call-1918053030619488679",
+                "type": "function",
+                "function": {
+                    "name": "create_booking",
+                    "arguments": "{\"destination\":\"Dubai\",\"name\":\"Hanzala\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-1918053030619488602",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"dubai\", \"price\": 650}"
+    },
+    {
+        "tool_call_id": "function-call-1918053030619488679",
+        "role": "tool",
+        "name": "create_booking",
+        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"baf180cd-7377-40c8-8d99-d924b9f517c8\", \"name\": \"Hanzala\", \"destination\": \"Dubai\"}}"
+    },
+    {
+        "role": "assistant",
+        "content": "Okay, Hanzala!\n\nThe ticket price for Dubai is $650.\n\nYour flight to Dubai has been booked. Your booking ID is `baf180cd-7377-40c8-8d99-d924b9f517c8`.\n\nLet me know if you need anything else!"
+    },
+    {
+        "role": "user",
+        "content": "book a flight to dubai for Hanzala on 25 May 2026, also tell the price\n\n\n"
+    },
+    {
+        "role": "assistant",
+        "content": "I can tell you the ticket price for Dubai and book a flight for Hanzala, but I cannot book for a specific date like \"25 May 2026\" with the current tools.\n\nWould you like me to proceed with getting the ticket price for Dubai and booking a flight for Hanzala, without specifying a date?"
+    },
+    {
+        "role": "user",
+        "content": "hi there "
+    }
+]
