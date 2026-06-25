@@ -40,19 +40,44 @@ tools = [
         "type": "function",
         "function": {
             "name": "get_ticket_price",
-            "description": "Get ticket price for a destination city",
+            "description": "Get ticket price from departure city to destination city by ticket class",
             "parameters": {
                 "type": "object",
                 "properties": {
+                    "departure": {
+                        "type": "string",
+                        "description": "Departure city"
+                    },
                     "destination": {
                         "type": "string",
-                        "description": "City name"
+                        "description": "Destination city"
+                    },
+                    "ticket_class": {
+                        "type": "string",
+                        "description": "Ticket class such as economy, business, or first_class"
                     }
                 },
-                "required": ["destination"]
+                "required": ["departure", "destination"]
             }
         }
     },
+    # {
+    #     "type": "function",
+    #     "function": {
+    #         "name": "get_ticket_price",
+    #         "description": "Get ticket price for a destination city",
+    #         "parameters": {
+    #             "type": "object",
+    #             "properties": {
+    #                 "destination": {
+    #                     "type": "string",
+    #                     "description": "City name"
+    #                 }
+    #             },
+    #             "required": ["destination"]
+    #         }
+    #     }
+    # },
         {
             "type": "function",
             "function": {
