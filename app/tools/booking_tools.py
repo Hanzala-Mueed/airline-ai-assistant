@@ -5,7 +5,7 @@ import uuid
 BOOKINGS_FILE = "app/data/bookings.json"
 
 
-def create_booking(name, destination,booking_date):
+def create_booking(name, departure, destination, booking_date):
 
     try:
         with open(BOOKINGS_FILE, "r") as file:
@@ -17,6 +17,7 @@ def create_booking(name, destination,booking_date):
     booking = {
         "id": str(uuid.uuid4()),
         "name": name,
+        "departure": departure,
         "destination": destination,
         "booking_date": booking_date
     }

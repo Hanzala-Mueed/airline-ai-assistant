@@ -8,5 +8,11 @@
         "id": "baf180cd-7377-40c8-8d99-d924b9f517c8",
         "name": "Hanzala",
         "destination": "Dubai"
+    },
+    {
+        "id": "cd6b337d-236f-41ac-98b1-114cd13e8cd2",
+        "name": "Aslam Shah",
+        "destination": "London",
+        "booking_date": "2026-06-29"
     }
 ]

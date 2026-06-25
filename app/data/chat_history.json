@@ -370,5 +370,145 @@
     {
         "role": "user",
         "content": "hi there "
+    },
+    {
+        "role": "user",
+        "content": "hye there"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How can I assist you today?"
+    },
+    {
+        "role": "user",
+        "content": "is there any flight fare increment of london?"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-4903421267595101808",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"London\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-4903421267595101808",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"london\", \"price\": 799}"
+    },
+    {
+        "role": "assistant",
+        "content": "I can tell you the current ticket price for London, which is $799. However, I don't have historical data or information about future fare increments. Prices can change frequently due to various factors.\n\nIs there anything else I can help you with regarding London flights?"
+    },
+    {
+        "role": "user",
+        "content": "well 799 fits in my budget"
+    },
+    {
+        "role": "assistant",
+        "content": "That's great to hear! Would you like me to book a flight to London for you? If so, please tell me your name and your desired booking date."
+    },
+    {
+        "role": "user",
+        "content": "yess book my ticket and desired date is 29 june 2026"
+    },
+    {
+        "role": "assistant",
+        "content": "I can book your ticket for London on June 29, 2026. What is your name for the booking?"
+    },
+    {
+        "role": "user",
+        "content": "Aslam shah"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-18134847388777334690",
+                "type": "function",
+                "function": {
+                    "name": "create_booking",
+                    "arguments": "{\"booking_date\":\"2026-06-29\",\"destination\":\"London\",\"name\":\"Aslam Shah\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-18134847388777334690",
+        "role": "tool",
+        "name": "create_booking",
+        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"cd6b337d-236f-41ac-98b1-114cd13e8cd2\", \"name\": \"Aslam Shah\", \"destination\": \"London\", \"booking_date\": \"2026-06-29\"}}"
+    },
+    {
+        "role": "assistant",
+        "content": "Great, Aslam Shah! Your ticket to London for June 29, 2026, has been booked. Your booking ID is `cd6b337d-236f-41ac-98b1-114cd13e8cd2`.\n\nIs there anything else I can help you with today?"
+    },
+    {
+        "role": "user",
+        "content": "as my current loactaion is dubai "
+    },
+    {
+        "role": "assistant",
+        "content": "Thanks for letting me know your current location is Dubai.\n\nHow can I help you with airline ticket prices or flight information from Dubai, or to any other destination?"
+    },
+    {
+        "role": "user",
+        "content": "from dubai to london ?"
+    },
+    {
+        "role": "assistant",
+        "content": "I can tell you the ticket price to London. However, I can't specify a departure city like Dubai with the tools I have.\n\nWould you like to know the ticket price for London generally?"
+    },
+    {
+        "role": "user",
+        "content": "i want to book a ticket "
+    },
+    {
+        "role": "assistant",
+        "content": "I can help you with that! To book a ticket, please tell me:\n\n1.  **Your name**\n2.  **The destination** (e.g., London, Paris, Tokyo)\n3.  **The desired booking date**"
+    },
+    {
+        "role": "user",
+        "content": "my current location is dubai "
+    },
+    {
+        "role": "assistant",
+        "content": "Okay, I understand your current location is Dubai.\n\nHow can I help you with a booking or flight information? Are you looking to book a flight *from* Dubai, or to a specific destination?"
+    },
+    {
+        "role": "user",
+        "content": "book a flight from dubai to london. also tell me what is the price of ticeket to london ?"
+    },
+    {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+            {
+                "id": "function-call-7377848829395113627",
+                "type": "function",
+                "function": {
+                    "name": "get_ticket_price",
+                    "arguments": "{\"destination\":\"London\"}"
+                }
+            }
+        ]
+    },
+    {
+        "tool_call_id": "function-call-7377848829395113627",
+        "role": "tool",
+        "name": "get_ticket_price",
+        "content": "{\"destination\": \"london\", \"price\": 799}"
+    },
+    {
+        "role": "assistant",
+        "content": "The ticket price for London is $799.\n\nI can book a flight to London for you, but please note that my current tools don't allow me to specify a departure city like Dubai. I can only book a flight *to* London.\n\nIf you'd like to proceed with booking a flight to London, please tell me your name and the desired booking date."
     }
 ]

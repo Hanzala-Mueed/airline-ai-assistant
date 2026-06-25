@@ -57,13 +57,17 @@ tools = [
             "type": "function",
             "function": {
                 "name": "create_booking",
-                "description": "Create a flight booking for a customer including destination and booking date",
+                "description": "Create a flight booking for a customer including departure, destination and booking date",
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "name": {
                             "type": "string",
                             "description": "customer name"
+                        },
+                        "departure": {
+                            "type": "string",
+                            "description": "Departure city"
                         },
                         "destination": {
                             "type": "string",
@@ -74,7 +78,7 @@ tools = [
                                 "description": "Date of the flight booking provided by the user"
                             }
                     },
-                    "required": ["name", "destination", "booking_date"]
+                    "required": ["name", "departure", "destination", "booking_date"]
                 }
             }
         }

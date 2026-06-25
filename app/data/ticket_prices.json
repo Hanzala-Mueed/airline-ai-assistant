@@ -1,6 +1,48 @@
 {
-    "london": 799,
-    "paris": 899,
-    "tokyo": 1400,
-    "dubai": 650
+    "new_york": {
+        "london": {
+            "economy": 799,
+            "business": 2200,
+            "first_class": 4500
+        },
+        "paris": {
+            "economy": 899,
+            "business": 2400,
+            "first_class": 4700
+        },
+        "dubai": {
+            "economy": 950,
+            "business": 2800,
+            "first_class": 5200
+        }
+    },
+    "miami": {
+        "london": {
+            "economy": 850,
+            "business": 2300,
+            "first_class": 4600
+        },
+        "paris": {
+            "economy": 920,
+            "business": 2500,
+            "first_class": 4800
+        },
+        "tokyo": {
+            "economy": 1450,
+            "business": 3900,
+            "first_class": 7200
+        }
+    },
+    "los_angeles": {
+        "tokyo": {
+            "economy": 1100,
+            "business": 3200,
+            "first_class": 6500
+        },
+        "dubai": {
+            "economy": 1200,
+            "business": 3500,
+            "first_class": 6900
+        }
+    }
 }
