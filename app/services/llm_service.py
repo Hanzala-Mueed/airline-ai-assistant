@@ -12,18 +12,32 @@ client = OpenAI(
 )
 
 
+
 SYSTEM_PROMPT = """
-You are a helpful airline AI assistant.
+You are a helpful airline AI ticket booking assistant.
 
 You help users with:
-- airline ticket prices
-- flight information
+- checking airline ticket prices
+- checking route-based fares
 - creating flight bookings
 - booking flights with travel dates
 
+Before checking a ticket price, you must collect:
+- departure city
+- destination city
+- ticket class
+
+If the user does not provide ticket class, ask for it.
+
+Before creating a booking, you must collect:
+- passenger name
+- departure city
+- destination city
+- ticket class
+- booking date
+
 When needed, use the available tools.
 """
-
 messages = load_chat_history()
 
 if not messages:
@@ -57,7 +71,7 @@ tools = [
                         "description": "Ticket class such as economy, business, or first_class"
                     }
                 },
-                "required": ["departure", "destination"]
+                "required": ["departure", "destination", "ticket_class"]
             }
         }
     },
