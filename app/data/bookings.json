@@ -14,5 +14,24 @@
         "name": "Aslam Shah",
         "destination": "London",
         "booking_date": "2026-06-29"
+    },
+    {
+        "id": "fcbb29eb-5fd2-4988-88e7-7a92895d9bab",
+        "name": "ayesha",
+        "departure": "Miami",
+        "destination": "Tokyo",
+        "booking_date": "28-06-2026"
+    },
+    {
+        "booking_reference": "AIR-6AD07EFD",
+        "status": "cancelled",
+        "name": "John Smith",
+        "departure": "Miami",
+        "destination": "Tokyo",
+        "booking_date": "2026-07-10",
+        "ticket_class": "economy",
+        "number_of_passengers": 2,
+        "price_per_passenger": 1450.0,
+        "total_price": 2900.0
     }
 ]

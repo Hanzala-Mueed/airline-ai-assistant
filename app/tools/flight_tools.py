@@ -23,8 +23,21 @@ import json
 TICKET_PRICES_FILE = "app/data/ticket_prices.json"
 
 
-def get_ticket_price(departure, destination, ticket_class="economy"):
+def get_ticket_price(departure=None, destination=None, ticket_class="economy"):
     try:
+        if not departure:
+            return {
+                "error": "Departure city is required."
+            }
+
+        if not destination:
+            return {
+                "error": "Destination city is required."
+            }
+
+        if not ticket_class:
+            ticket_class = "economy"
+
         with open(TICKET_PRICES_FILE, "r") as file:
             prices = json.load(file)
 

@@ -3,7 +3,7 @@ from openai import OpenAI
 from app.config import (GEMINI_API_KEY, MODEL_NAME, BASE_URL)
 from app.tools.flight_tools import get_ticket_price
 from app.services.history_service import (load_chat_history, save_chat_history)
-from app.tools.booking_tools import create_booking
+from app.tools.booking_tools import create_booking, view_booking, cancel_booking
 
 
 client = OpenAI(
@@ -20,24 +20,44 @@ You help users with:
 - checking airline ticket prices
 - checking route-based fares
 - creating flight bookings
-- booking flights with travel dates
+- viewing flight bookings
+- cancelling flight bookings
 
 Before checking a ticket price, you must collect:
 - departure city
 - destination city
 - ticket class
 
-If the user does not provide ticket class, ask for it.
-
 Before creating a booking, you must collect:
 - passenger name
 - departure city
 - destination city
 - ticket class
+- number of passengers
 - booking date
+
+Before creating a booking, first check the ticket price using the get_ticket_price tool.
+Use the returned price as price_per_passenger.
+Calculate total price using:
+price_per_passenger * number_of_passengers
+
+When a booking is created, clearly show:
+- booking reference
+- passenger name
+- departure city
+- destination city
+- booking date
+- ticket class
+- number of passengers
+- price per passenger
+- total price
+- booking status
+
+To view or cancel a booking, ask for the booking reference number if the user has not provided it.
 
 When needed, use the available tools.
 """
+
 messages = load_chat_history()
 
 if not messages:
@@ -75,34 +95,18 @@ tools = [
             }
         }
     },
-    # {
-    #     "type": "function",
-    #     "function": {
-    #         "name": "get_ticket_price",
-    #         "description": "Get ticket price for a destination city",
-    #         "parameters": {
-    #             "type": "object",
-    #             "properties": {
-    #                 "destination": {
-    #                     "type": "string",
-    #                     "description": "City name"
-    #                 }
-    #             },
-    #             "required": ["destination"]
-    #         }
-    #     }
-    # },
-        {
+
+    {
             "type": "function",
             "function": {
                 "name": "create_booking",
-                "description": "Create a flight booking for a customer including departure, destination and booking date",
+                "description": "Create a flight booking for a customer",
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "name": {
                             "type": "string",
-                            "description": "customer name"
+                            "description": "Customer name"
                         },
                         "departure": {
                             "type": "string",
@@ -112,21 +116,82 @@ tools = [
                             "type": "string",
                             "description": "Destination city"
                         },
-                            "booking_date": {
-                                "type": "string",
-                                "description": "Date of the flight booking provided by the user"
-                            }
+                        "booking_date": {
+                            "type": "string",
+                            "description": "Date of the flight booking"
+                        },
+                        "ticket_class": {
+                            "type": "string",
+                            "description": "Ticket class such as economy, business, or first_class"
+                        },
+                        "number_of_passengers": {
+                            "type": "integer",
+                            "description": "Number of passengers"
+                        },
+                        "price_per_passenger": {
+                            "type": "number",
+                            "description": "Ticket price per passenger"
+                        }
                     },
-                    "required": ["name", "departure", "destination", "booking_date"]
+                    "required": [
+                        "name",
+                        "departure",
+                        "destination",
+                        "booking_date",
+                        "ticket_class",
+                        "number_of_passengers",
+                        "price_per_passenger"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "view_booking",
+                "description": "View a booking by booking reference number",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "booking_reference": {
+                            "type": "string",
+                            "description": "Booking reference number"
+                        }
+                    },
+                    "required": ["booking_reference"]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "cancel_booking",
+                "description": "Cancel a booking by booking reference number",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "booking_reference": {
+                            "type": "string",
+                            "description": "Booking reference number"
+                        }
+                    },
+                    "required": ["booking_reference"]
                 }
             }
         }
 ]
 
 
+# available_functions = {
+#     "get_ticket_price": get_ticket_price,
+#     "create_booking": create_booking
+# }
+
 available_functions = {
     "get_ticket_price": get_ticket_price,
-    "create_booking": create_booking
+    "create_booking": create_booking,
+    "view_booking": view_booking,
+    "cancel_booking": cancel_booking
 }
 
 
@@ -216,6 +281,8 @@ def ask_ai(user_message):
         )
 
         final_reply = second_response.choices[0].message.content
+        if final_reply is None:
+            final_reply = "Done. The requested action has been completed."
 
         messages.append(
             {
@@ -229,6 +296,8 @@ def ask_ai(user_message):
         return final_reply
 
     assistant_reply = response_message.content
+    if assistant_reply is None:
+        assistant_reply = "I processed your request, but no message was returned."
 
     messages.append(
         {

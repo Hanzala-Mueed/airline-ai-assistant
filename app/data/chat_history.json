@@ -1,514 +1,90 @@
 [
     {
         "role": "system",
-        "content": "\nYou are a helpful airline AI assistant.\n\nYou help users with:\n- airline ticket prices\n- flight information\n\nWhen needed, use the available tools.\n"
+        "content": "\nYou are a helpful airline AI ticket booking assistant.\n\nYou help users with:\n- checking airline ticket prices\n- checking route-based fares\n- creating flight bookings\n- viewing flight bookings\n- cancelling flight bookings\n\nBefore checking a ticket price, you must collect:\n- departure city\n- destination city\n- ticket class\n\nBefore creating a booking, you must collect:\n- passenger name\n- departure city\n- destination city\n- ticket class\n- number of passengers\n- booking date\n\nBefore creating a booking, first check the ticket price using the get_ticket_price tool.\nUse the returned price as price_per_passenger.\nCalculate total price using:\nprice_per_passenger * number_of_passengers\n\nWhen a booking is created, clearly show:\n- booking reference\n- passenger name\n- departure city\n- destination city\n- booking date\n- ticket class\n- number of passengers\n- price per passenger\n- total price\n- booking status\n\nTo view or cancel a booking, ask for the booking reference number if the user has not provided it.\n\nWhen needed, use the available tools.\n"
     },
     {
         "role": "user",
-        "content": "hello "
-    },
-    {
-        "role": "assistant",
-        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How may I help you today?\n"
-    },
-    {
-        "role": "user",
-        "content": "i am planning to go london . do you have tickets ?"
+        "content": "Book a flight for John Smith from Miami to Tokyo on 2026-07-10. Economy class for 2 passengers."
     },
     {
         "role": "assistant",
         "content": null,
         "tool_calls": [
             {
-                "id": "function-call-7837561074389724036",
+                "id": "function-call-12314201591668735770",
                 "type": "function",
                 "function": {
                     "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"London\"}"
+                    "arguments": "{\"departure\":\"Miami\",\"destination\":\"Tokyo\",\"ticket_class\":\"economy\"}"
                 }
             }
         ]
     },
     {
-        "tool_call_id": "function-call-7837561074389724036",
+        "tool_call_id": "function-call-12314201591668735770",
         "role": "tool",
         "name": "get_ticket_price",
-        "content": "{\"destination\": \"london\", \"price\": 799}"
+        "content": "{\"departure\": \"miami\", \"destination\": \"tokyo\", \"ticket_class\": \"economy\", \"price\": 1450}"
     },
     {
         "role": "assistant",
-        "content": "Yes, I can help you with tickets to London! I found a ticket for $799.\n\nWould you like to explore other options or book this ticket?\n"
+        "content": null
     },
     {
         "role": "user",
-        "content": "good to know, book a ticket for london "
-    },
-    {
-        "role": "assistant",
-        "content": "I can't directly book tickets for you at the moment. However, I can provide you with the ticket price, and then you can proceed with booking through the airline's website or a travel agent.\n\nWould you like me to find more details about flights to London, or perhaps search for different dates?\n"
-    },
-    {
-        "role": "user",
-        "content": "i also want to know the ticket prices of paris and tokyo "
+        "content": "hye"
     },
     {
         "role": "assistant",
         "content": null,
         "tool_calls": [
             {
-                "id": "function-call-13011019832924526087",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Paris\"}"
-                }
-            },
-            {
-                "id": "function-call-13011019832924525552",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Tokyo\"}"
-                }
-            }
-        ]
-    },
-    {
-        "role": "user",
-        "content": "hi there "
-    },
-    {
-        "role": "assistant",
-        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How may I help you today?"
-    },
-    {
-        "role": "user",
-        "content": "tell me the ticket price of paris "
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-4764610614690180865",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Paris\"}"
-                }
-            }
-        ]
-    },
-    {
-        "role": "user",
-        "content": "hi how are you "
-    },
-    {
-        "role": "assistant",
-        "content": "Hello! I'm an AI assistant, so I don't have feelings, but I'm ready to help you with airline ticket prices and flight information. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "content": "tell me the ticket price of london "
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-1815067706232690195",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"London\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-1815067706232690195",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"london\", \"price\": 799}"
-    },
-    {
-        "role": "assistant",
-        "content": "The ticket price for London is $799."
-    },
-    {
-        "role": "user",
-        "content": "also tell me the ticket price of dubai and paris"
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-11238979752054358702",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Dubai\"}"
-                }
-            },
-            {
-                "id": "function-call-11238979752054360833",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Paris\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-11238979752054358702",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"dubai\", \"price\": 650}"
-    },
-    {
-        "tool_call_id": "function-call-11238979752054360833",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"paris\", \"price\": 899}"
-    },
-    {
-        "role": "assistant",
-        "content": "The ticket price for Dubai is $650 and for Paris is $899."
-    },
-    {
-        "role": "user",
-        "content": "which price is higher tokyo or london ?"
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-12161435611688644641",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Tokyo\"}"
-                }
-            },
-            {
-                "id": "function-call-12161435611688645318",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"London\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-12161435611688644641",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"tokyo\", \"price\": 1400}"
-    },
-    {
-        "tool_call_id": "function-call-12161435611688645318",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"london\", \"price\": 799}"
-    },
-    {
-        "role": "assistant",
-        "content": "The ticket price for Tokyo is $1400 and for London is $799. Therefore, the ticket price for **Tokyo** is higher."
-    },
-    {
-        "role": "user",
-        "content": "hi, i am planning a summer trip "
-    },
-    {
-        "role": "assistant",
-        "content": "That sounds exciting! To help you with your summer trip, I can provide you with airline ticket prices and flight information.\n\nWhere are you planning to go this summer?"
-    },
-    {
-        "role": "user",
-        "content": "i have two options in my mind, paris and dubai. But i am curious about the tickets prices "
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-9505367888970986937",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Paris\"}"
-                }
-            },
-            {
-                "id": "function-call-9505367888970988582",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Dubai\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-9505367888970986937",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"paris\", \"price\": 899}"
-    },
-    {
-        "tool_call_id": "function-call-9505367888970988582",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"dubai\", \"price\": 650}"
-    },
-    {
-        "role": "assistant",
-        "content": "I can help you with that!\n\nThe ticket price for Paris is $899.\nThe ticket price for Dubai is $650."
-    },
-    {
-        "role": "user",
-        "content": "well thats suit my budget , ok then book my ticket "
-    },
-    {
-        "role": "assistant",
-        "content": "I can help you with that! To book your ticket, I need your name and which destination you'd like to book for (Paris or Dubai)."
-    },
-    {
-        "role": "user",
-        "content": "name is Hanzala,  and ticket for paris "
-    },
-    {
-        "role": "user",
-        "content": "hi i want to book a ticket for paris "
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-17470941756261857957",
+                "id": "function-call-13860248105648959874",
                 "type": "function",
                 "function": {
                     "name": "create_booking",
-                    "arguments": "{\"name\":\"Hanzala\",\"destination\":\"Paris\"}"
+                    "arguments": "{\"number_of_passengers\":2,\"name\":\"John Smith\",\"destination\":\"Tokyo\",\"booking_date\":\"2026-07-10\",\"departure\":\"Miami\",\"ticket_class\":\"economy\",\"price_per_passenger\":1450}"
                 }
             }
         ]
     },
     {
-        "tool_call_id": "function-call-17470941756261857957",
+        "tool_call_id": "function-call-13860248105648959874",
         "role": "tool",
         "name": "create_booking",
-        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"633551f6-358e-4e40-a145-a4b5b16fde0c\", \"name\": \"Hanzala\", \"destination\": \"Paris\"}}"
+        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"booking_reference\": \"AIR-6AD07EFD\", \"status\": \"confirmed\", \"name\": \"John Smith\", \"departure\": \"Miami\", \"destination\": \"Tokyo\", \"booking_date\": \"2026-07-10\", \"ticket_class\": \"economy\", \"number_of_passengers\": 2, \"price_per_passenger\": 1450.0, \"total_price\": 2900.0}}"
     },
     {
         "role": "assistant",
-        "content": "Great, Hanzala! Your ticket for Paris has been booked. Your booking ID is `633551f6-358e-4e40-a145-a4b5b16fde0c`.\n\nIs there anything else I can help you with regarding your trip to Paris or other flight information?"
+        "content": "Your flight for John Smith from Miami to Tokyo on 2026-07-10 has been booked!\n\nHere are the details:\n- **Booking Reference:** AIR-6AD07EFD\n- **Passenger Name:** John Smith\n- **Departure City:** Miami\n- **Destination City:** Tokyo\n- **Booking Date:** 2026-07-10\n- **Ticket Class:** Economy\n- **Number of Passengers:** 2\n- **Price per Passenger:** 1450.0\n- **Total Price:** 2900.0\n- **Booking Status:** confirmed\n\nIs there anything else I can help you with today?"
     },
     {
         "role": "user",
-        "content": "book a flight to dubai for Hanzala on 25 May 2026, also tell the price "
-    },
-    {
-        "role": "assistant",
-        "content": "I can tell you the ticket price for Dubai and book a flight for Hanzala, but I cannot book for a specific date like \"25 May 2026\" with the current tools.\n\nWould you like me to proceed with booking a flight to Dubai for Hanzala at the available date, and also tell you the price?"
-    },
-    {
-        "role": "user",
-        "content": "yess go ahead"
+        "content": "i want to cancel the ticket  AIR-6AD07EFD"
     },
     {
         "role": "assistant",
         "content": null,
         "tool_calls": [
             {
-                "id": "function-call-1918053030619488602",
+                "id": "function-call-9159416091828633163",
                 "type": "function",
                 "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"Dubai\"}"
-                }
-            },
-            {
-                "id": "function-call-1918053030619488679",
-                "type": "function",
-                "function": {
-                    "name": "create_booking",
-                    "arguments": "{\"destination\":\"Dubai\",\"name\":\"Hanzala\"}"
+                    "name": "cancel_booking",
+                    "arguments": "{\"booking_reference\":\"AIR-6AD07EFD\"}"
                 }
             }
         ]
     },
     {
-        "tool_call_id": "function-call-1918053030619488602",
+        "tool_call_id": "function-call-9159416091828633163",
         "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"dubai\", \"price\": 650}"
-    },
-    {
-        "tool_call_id": "function-call-1918053030619488679",
-        "role": "tool",
-        "name": "create_booking",
-        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"baf180cd-7377-40c8-8d99-d924b9f517c8\", \"name\": \"Hanzala\", \"destination\": \"Dubai\"}}"
+        "name": "cancel_booking",
+        "content": "{\"message\": \"Booking cancelled successfully\", \"booking\": {\"booking_reference\": \"AIR-6AD07EFD\", \"status\": \"cancelled\", \"name\": \"John Smith\", \"departure\": \"Miami\", \"destination\": \"Tokyo\", \"booking_date\": \"2026-07-10\", \"ticket_class\": \"economy\", \"number_of_passengers\": 2, \"price_per_passenger\": 1450.0, \"total_price\": 2900.0}}"
     },
     {
         "role": "assistant",
-        "content": "Okay, Hanzala!\n\nThe ticket price for Dubai is $650.\n\nYour flight to Dubai has been booked. Your booking ID is `baf180cd-7377-40c8-8d99-d924b9f517c8`.\n\nLet me know if you need anything else!"
-    },
-    {
-        "role": "user",
-        "content": "book a flight to dubai for Hanzala on 25 May 2026, also tell the price\n\n\n"
-    },
-    {
-        "role": "assistant",
-        "content": "I can tell you the ticket price for Dubai and book a flight for Hanzala, but I cannot book for a specific date like \"25 May 2026\" with the current tools.\n\nWould you like me to proceed with getting the ticket price for Dubai and booking a flight for Hanzala, without specifying a date?"
-    },
-    {
-        "role": "user",
-        "content": "hi there "
-    },
-    {
-        "role": "user",
-        "content": "hye there"
-    },
-    {
-        "role": "assistant",
-        "content": "Hello! I'm an airline AI assistant. I can help you with airline ticket prices and flight information. How can I assist you today?"
-    },
-    {
-        "role": "user",
-        "content": "is there any flight fare increment of london?"
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-4903421267595101808",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"London\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-4903421267595101808",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"london\", \"price\": 799}"
-    },
-    {
-        "role": "assistant",
-        "content": "I can tell you the current ticket price for London, which is $799. However, I don't have historical data or information about future fare increments. Prices can change frequently due to various factors.\n\nIs there anything else I can help you with regarding London flights?"
-    },
-    {
-        "role": "user",
-        "content": "well 799 fits in my budget"
-    },
-    {
-        "role": "assistant",
-        "content": "That's great to hear! Would you like me to book a flight to London for you? If so, please tell me your name and your desired booking date."
-    },
-    {
-        "role": "user",
-        "content": "yess book my ticket and desired date is 29 june 2026"
-    },
-    {
-        "role": "assistant",
-        "content": "I can book your ticket for London on June 29, 2026. What is your name for the booking?"
-    },
-    {
-        "role": "user",
-        "content": "Aslam shah"
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-18134847388777334690",
-                "type": "function",
-                "function": {
-                    "name": "create_booking",
-                    "arguments": "{\"booking_date\":\"2026-06-29\",\"destination\":\"London\",\"name\":\"Aslam Shah\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-18134847388777334690",
-        "role": "tool",
-        "name": "create_booking",
-        "content": "{\"message\": \"Booking created successfully\", \"booking\": {\"id\": \"cd6b337d-236f-41ac-98b1-114cd13e8cd2\", \"name\": \"Aslam Shah\", \"destination\": \"London\", \"booking_date\": \"2026-06-29\"}}"
-    },
-    {
-        "role": "assistant",
-        "content": "Great, Aslam Shah! Your ticket to London for June 29, 2026, has been booked. Your booking ID is `cd6b337d-236f-41ac-98b1-114cd13e8cd2`.\n\nIs there anything else I can help you with today?"
-    },
-    {
-        "role": "user",
-        "content": "as my current loactaion is dubai "
-    },
-    {
-        "role": "assistant",
-        "content": "Thanks for letting me know your current location is Dubai.\n\nHow can I help you with airline ticket prices or flight information from Dubai, or to any other destination?"
-    },
-    {
-        "role": "user",
-        "content": "from dubai to london ?"
-    },
-    {
-        "role": "assistant",
-        "content": "I can tell you the ticket price to London. However, I can't specify a departure city like Dubai with the tools I have.\n\nWould you like to know the ticket price for London generally?"
-    },
-    {
-        "role": "user",
-        "content": "i want to book a ticket "
-    },
-    {
-        "role": "assistant",
-        "content": "I can help you with that! To book a ticket, please tell me:\n\n1.  **Your name**\n2.  **The destination** (e.g., London, Paris, Tokyo)\n3.  **The desired booking date**"
-    },
-    {
-        "role": "user",
-        "content": "my current location is dubai "
-    },
-    {
-        "role": "assistant",
-        "content": "Okay, I understand your current location is Dubai.\n\nHow can I help you with a booking or flight information? Are you looking to book a flight *from* Dubai, or to a specific destination?"
-    },
-    {
-        "role": "user",
-        "content": "book a flight from dubai to london. also tell me what is the price of ticeket to london ?"
-    },
-    {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-            {
-                "id": "function-call-7377848829395113627",
-                "type": "function",
-                "function": {
-                    "name": "get_ticket_price",
-                    "arguments": "{\"destination\":\"London\"}"
-                }
-            }
-        ]
-    },
-    {
-        "tool_call_id": "function-call-7377848829395113627",
-        "role": "tool",
-        "name": "get_ticket_price",
-        "content": "{\"destination\": \"london\", \"price\": 799}"
-    },
-    {
-        "role": "assistant",
-        "content": "The ticket price for London is $799.\n\nI can book a flight to London for you, but please note that my current tools don't allow me to specify a departure city like Dubai. I can only book a flight *to* London.\n\nIf you'd like to proceed with booking a flight to London, please tell me your name and the desired booking date."
+        "content": "Your booking with reference AIR-6AD07EFD has been successfully cancelled.\n\nHere are the details of the cancelled booking:\n- **Booking Reference:** AIR-6AD07EFD\n- **Passenger Name:** John Smith\n- **Departure City:** Miami\n- **Destination City:** Tokyo\n- **Booking Date:** 2026-07-10\n- **Ticket Class:** Economy\n- **Number of Passengers:** 2\n- **Price per Passenger:** 1450.0\n- **Total Price:** 2900.0\n- **Booking Status:** cancelled\n\nIs there anything else I can assist you with?"
     }
 ]
