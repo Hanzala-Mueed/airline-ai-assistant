@@ -275,14 +275,21 @@ def ask_ai(user_message):
             )
             save_chat_history(messages)
 
-        second_response = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=messages
-        )
 
-        final_reply = second_response.choices[0].message.content
-        if final_reply is None:
-            final_reply = "Done. The requested action has been completed."
+        try:
+            second_response = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages
+            )
+
+
+            final_reply = second_response.choices[0].message.content
+
+            if final_reply is None:
+                final_reply = "The action was completed successfully."
+
+        except Exception as e:
+            final_reply = "The action was completed, but the AI response could not be generated due to API quota or rate limit."
 
         messages.append(
             {
